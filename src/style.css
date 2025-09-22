@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	/* Neue Plak */
+	@font-face {
+		font-family: "Neue Plak";
+		src: url("/fonts/NeuePlak-Regular.woff2") format("woff2");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Neue Plak";
+		src: url("/fonts/NeuePlak-SemiBold.woff2") format("woff2");
+		font-weight: 600;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Neue Plak Condensed";
+		src: url("/fonts/NeuePlakCondensed-Regular.woff2") format("woff2");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Neue Plak Condensed";
+		src: url("/fonts/NeuePlakCondensed-Black.woff2") format("woff2");
+		font-weight: 600;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@layer components {
+		.condensed {
+			font-family: "Neue Plak Condensed", sans-serif;
+		}
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		@apply hidden;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+}
+
+/* custom */
+
+.form-input {
+	@apply p-4 ps-2 block w-full border-0 border-b border-neutral-200 placeholder:text-transparent focus:border-0 focus:border-b focus:border-morado focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none
+  invalid:[&:not(:placeholder-shown):focus]:border-0
+  invalid:[&:not(:placeholder-shown):focus]:border-b
+  invalid:[&:not(:placeholder-shown):focus]:border-red-500
+  focus:pt-6
+  focus:pb-2
+  focus:placeholder:text-neutral-600
+  [&:not(:placeholder-shown)]:pt-6
+  [&:not(:placeholder-shown)]:pb-2
+  autofill:pt-6
+  autofill:pb-2;
+}
+
+.form-label {
+	@apply absolute top-0 start-0 p-4 ps-2 h-full truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 text-neutral-600 peer-disabled:pointer-events-none
+  peer-focus:text-xs
+  peer-focus:py-3
+  peer-focus:-translate-y-1.5
+  peer-focus:text-neutral-600
+  peer-[:not(:placeholder-shown)]:text-xs
+  peer-[:not(:placeholder-shown)]:py-3
+  peer-[:not(:placeholder-shown)]:-translate-y-1.5
+  peer-[:not(:placeholder-shown)]:text-neutral-600;
+}

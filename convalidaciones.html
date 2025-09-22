@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convalidaciones</title>
+    <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  	<div class="flex flex-col min-h-screen overflow-hidden" x-data="atTop" x-init="height" @resize.window="height">
+
+     	{{> header }}
+
+	    <main>
+
+			<!-- Banner -->
+			<section class="overflow-hidden relative bg-morado">
+
+				<div class="max-w-7xl mx-auto">
+
+					<div class="grid grid-cols-1 lg:grid-cols-5">
+
+						<div class="relative lg:col-span-2 py-8 lg:py-16 px-5 md:px-6">
+							<div class="absolute right-0 bottom-0">
+								<svg xmlns="http://www.w3.org/2000/svg" class="w-72 md:w-96" width="401" height="206" fill="none"><path fill="#7E24E5" d="M300.81 206h99.894v-18.66H300.81z"/><path fill="#7C19E0" fill-opacity=".5" d="M200.916 187.34h99.894v-18.66h-99.894z"/><path fill="#7E24E5" d="M101.022 168.68h99.894v-18.66h-99.894z"/><path fill="#7C19E0" fill-opacity=".5" d="M200.916 150.021h99.894v-18.66h-99.894zM199.787 112.701h99.894v-18.66h-99.894zM99.893 94.042h99.894v-18.66H99.893z"/><path fill="#7E24E5" d="M300.245 19.403h99.894V.743h-99.894zM0 38.062h99.894v-18.66H0z"/><path fill="#7C19E0" fill-opacity=".5" d="M199.787 75.382h200.916v-18.66H199.787z"/><path fill="#7E24E5" d="M300.81 131.361h99.894v-18.66H300.81z"/></svg>
+							</div>
+							<div class="relative">
+								<h1 class="mb-4 condensed text-5xl font-bold uppercase text-white md:text-7xl">Convalidaciones</h1>
+								<p class="text-white text-lg">Es el proceso de reconocimiento oficial que le da validez a los estudios que llevaste previamente en otra institución o carrera, permitiéndote disminuir la carga académica, o en su defecto la duración de la carrera a elegir en nuestra Universidad.</p>
+								<div class="flex gap-4 mt-6 md:mt-12">
+									<a href="#" class="inline-flex rounded-full bg-white px-4 md:px-6 pb-3 pt-2 font-bold text-morado border border-white transition-colors duration-300 hover:bg-morado hover:border-white hover:text-white">Ver instructivo</a>
+									<a href="#" class="inline-flex rounded-full bg-morado px-4 md:px-6 pb-3 pt-2 font-bold text-white border border-white transition-colors duration-300 hover:bg-white hover:text-morado">Ver reglamento</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="order-first lg:col-span-3 lg:order-last">
+							<div class="lg:absolute lg:inset-y-0">
+								<img srcset="./img/modalidad-banner-sm.webp 480w, ./img/modalidad-banner.webp 800w" sizes="(min-width: 992px) 100vw, 40vw" alt="" class="w-full h-full object-cover" loading="eager">
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Como Convalidar -->
+			<section class="bg-white">
+				<div class="max-w-7xl mx-auto space-y-10 py-16 px-5 md:px-6">
+					<h2 class="text-center text-2xl md:text-5xl font-bold">¿Cómo convalidar mis estudios?</h2>
+
+					<div x-data="{ selectedTab: 'tab1' }" class="w-full">
+						<div x-on:keydown.right.prevent="$focus.wrap().next()" x-on:keydown.left.prevent="$focus.wrap().previous()" class="max-w-3xl mx-auto flex justify-between overflow-x-auto border-b border-black/50" role="tablist" aria-label="tab options">
+							<button x-on:click="selectedTab = 'tab1'" x-bind:aria-selected="selectedTab === 'tab1'" x-bind:tabindex="selectedTab === 'tab1' ? '0' : '-1'" x-bind:class="selectedTab === 'tab1' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="w-fit md:w-1/3 flex-shrink-0 h-min px-4 py-2" type="button" role="tab" aria-controls="tabpaneltab1" >Requisitos</button>
+							<button x-on:click="selectedTab = 'tab2'" x-bind:aria-selected="selectedTab === 'tab2'" x-bind:tabindex="selectedTab === 'tab2' ? '0' : '-1'" x-bind:class="selectedTab === 'tab2' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="w-fit md:w-1/3 flex-shrink-0 h-min px-4 py-2" type="button" role="tab" aria-controls="tabpaneltab2" >Presentación de documentos</button>
+							<button x-on:click="selectedTab = 'tab3'" x-bind:aria-selected="selectedTab === 'tab3'" x-bind:tabindex="selectedTab === 'tab3' ? '0' : '-1'" x-bind:class="selectedTab === 'tab3' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="w-fit md:w-1/3 flex-shrink-0 h-min px-4 py-2" type="button" role="tab" aria-controls="tabpaneltab3" >Cronograma</button>
+						</div>
+
+						<div class="max-w-4xl mx-auto mt-6 md:mt-12 text-black">
+							<div x-cloak x-show="selectedTab === 'tab1'" id="tabpaneltab1" role="tabpanel" aria-label="groups">
+
+								<div class="bg-plomo w-full flex flex-col gap-4 md:gap-6 p-4 md:p-6">
+									<h3 class="text-xl font-bold">Requisitos para convalidación</h3>
+									<h5 class="text-lg font-bold">Requisitos generales</h5>
+									<div class="flex flex-col gap-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-morado"
+									x-data="{certificados: [
+										'Certificado original de estudios correspondiente a los cinco años de educación secundaria.',
+										'Certificado original de estudios universitarios con un mínimo de 72 créditos aprobados.',
+										'Constancia de la primera matrícula en la universidad de procedencia.',
+										'Constancia de no haber sido separado de su institución de procedencia.',
+										'Sílabos originales autenticados por la universidad de origen.',
+									]}"
+									>
+										<template x-for="(item, index) in certificados">
+										<div class="flex items-center gap-2 text-lg">
+											<div class="w-6">
+												<svg class="size-6 fill-morado" viewBox="0 0 49 40"><path d="M37.048 0 8.328 28.723l11.282 11.28 28.719-28.722a11.936 11.936 0 0 0-3.482-7.792A12.018 12.018 0 0 0 37.047 0Zm9.08 10.506L19.74 36.908l-.135.135-8.316-8.316L28.95 11.069l8.856-8.871a9.78 9.78 0 0 1 5.54 2.775 9.819 9.819 0 0 1 2.784 5.533h-.004Z"/><path d="M43.05 10.032a4.996 4.996 0 0 0-1.465-3.281 5.084 5.084 0 0 0-3.28-1.477l-7.569 7.568-14.974 14.963a5.007 5.007 0 0 0 1.465 3.289c.913.914 2.09 1.4 3.28 1.465l7.569-7.568L43.05 10.03Zm-2.259-.71-6.782 6.794-.011-.012-14.188 14.2a2.994 2.994 0 0 1-1.095-.69 2.936 2.936 0 0 1-.69-1.096l6.782-6.781h.011l14.188-14.2c.405.15.775.37 1.095.69.32.32.551.702.69 1.095ZM7.41 16.524a5.013 5.013 0 0 0-1.464 3.281l1.935 1.936 3.71 3.709 1.484-1.485-4.87-4.861c.15-.405.37-.775.69-1.095.32-.32.702-.552 1.095-.69l1.153 1.152v.012l3.709 3.709 1.484-1.485-5.636-5.644a5.007 5.007 0 0 0-3.29 1.465v-.004Z"/><path d="M9.805 27.239 6.1 23.537l-3.231-3.23a9.833 9.833 0 0 1 2.78-5.54 9.778 9.778 0 0 1 5.528-2.78l6.94 6.94 1.485-1.485-.887-.887-1.485-1.484-1.78-1.781-1.485-1.485-2.013-2.012a11.92 11.92 0 0 0-7.791 3.481A11.9 11.9 0 0 0 .67 21.07l7.653 7.653 1.48-1.48v-.004Z"/><path d="m5.533 22.976-1.477 1.478 4.269 4.27 1.477-1.478-4.269-4.27Z"/></svg>
+											</div>
+											<span x-text="item"></span>
+										</div>
+										</template>
+									</div>
+								</div>
+
+							</div>
+							<div x-cloak x-show="selectedTab === 'tab2'" id="tabpaneltab2" role="tabpanel" aria-label="groups">
+
+								<div class="bg-plomo w-full flex flex-col gap-4 md:gap-6 p-4 md:p-6">
+									<h3 class="text-xl font-bold">Documentos</h3>
+									<div class="flex flex-col gap-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-morado"
+									x-data="{certificados: [
+										'Documento 1',
+										'Documento 2',
+									]}"
+									>
+										<template x-for="(item, index) in certificados">
+										<div class="flex items-center gap-2 text-lg">
+											<div class="w-6">
+												<svg class="size-6 fill-morado" viewBox="0 0 49 40"><path d="M37.048 0 8.328 28.723l11.282 11.28 28.719-28.722a11.936 11.936 0 0 0-3.482-7.792A12.018 12.018 0 0 0 37.047 0Zm9.08 10.506L19.74 36.908l-.135.135-8.316-8.316L28.95 11.069l8.856-8.871a9.78 9.78 0 0 1 5.54 2.775 9.819 9.819 0 0 1 2.784 5.533h-.004Z"/><path d="M43.05 10.032a4.996 4.996 0 0 0-1.465-3.281 5.084 5.084 0 0 0-3.28-1.477l-7.569 7.568-14.974 14.963a5.007 5.007 0 0 0 1.465 3.289c.913.914 2.09 1.4 3.28 1.465l7.569-7.568L43.05 10.03Zm-2.259-.71-6.782 6.794-.011-.012-14.188 14.2a2.994 2.994 0 0 1-1.095-.69 2.936 2.936 0 0 1-.69-1.096l6.782-6.781h.011l14.188-14.2c.405.15.775.37 1.095.69.32.32.551.702.69 1.095ZM7.41 16.524a5.013 5.013 0 0 0-1.464 3.281l1.935 1.936 3.71 3.709 1.484-1.485-4.87-4.861c.15-.405.37-.775.69-1.095.32-.32.702-.552 1.095-.69l1.153 1.152v.012l3.709 3.709 1.484-1.485-5.636-5.644a5.007 5.007 0 0 0-3.29 1.465v-.004Z"/><path d="M9.805 27.239 6.1 23.537l-3.231-3.23a9.833 9.833 0 0 1 2.78-5.54 9.778 9.778 0 0 1 5.528-2.78l6.94 6.94 1.485-1.485-.887-.887-1.485-1.484-1.78-1.781-1.485-1.485-2.013-2.012a11.92 11.92 0 0 0-7.791 3.481A11.9 11.9 0 0 0 .67 21.07l7.653 7.653 1.48-1.48v-.004Z"/><path d="m5.533 22.976-1.477 1.478 4.269 4.27 1.477-1.478-4.269-4.27Z"/></svg>
+											</div>
+											<span x-text="item"></span>
+										</div>
+										</template>
+									</div>
+								</div>
+
+							</div>
+							<div x-cloak x-show="selectedTab === 'tab3'" id="tabpaneltab2" role="tabpanel" aria-label="groups">
+
+								<div class="bg-plomo w-full flex flex-col gap-4 md:gap-6 p-4 md:p-6">
+									<h3 class="text-xl font-bold">Cronograma</h3>
+									<div class="flex flex-col gap-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-morado"
+									x-data="{certificados: [
+										'Documento 1',
+										'Documento 2',
+									]}"
+									>
+										<template x-for="(item, index) in certificados">
+										<div class="flex items-center gap-2 text-lg">
+											<div class="w-6">
+												<svg class="size-6 fill-morado" viewBox="0 0 49 40"><path d="M37.048 0 8.328 28.723l11.282 11.28 28.719-28.722a11.936 11.936 0 0 0-3.482-7.792A12.018 12.018 0 0 0 37.047 0Zm9.08 10.506L19.74 36.908l-.135.135-8.316-8.316L28.95 11.069l8.856-8.871a9.78 9.78 0 0 1 5.54 2.775 9.819 9.819 0 0 1 2.784 5.533h-.004Z"/><path d="M43.05 10.032a4.996 4.996 0 0 0-1.465-3.281 5.084 5.084 0 0 0-3.28-1.477l-7.569 7.568-14.974 14.963a5.007 5.007 0 0 0 1.465 3.289c.913.914 2.09 1.4 3.28 1.465l7.569-7.568L43.05 10.03Zm-2.259-.71-6.782 6.794-.011-.012-14.188 14.2a2.994 2.994 0 0 1-1.095-.69 2.936 2.936 0 0 1-.69-1.096l6.782-6.781h.011l14.188-14.2c.405.15.775.37 1.095.69.32.32.551.702.69 1.095ZM7.41 16.524a5.013 5.013 0 0 0-1.464 3.281l1.935 1.936 3.71 3.709 1.484-1.485-4.87-4.861c.15-.405.37-.775.69-1.095.32-.32.702-.552 1.095-.69l1.153 1.152v.012l3.709 3.709 1.484-1.485-5.636-5.644a5.007 5.007 0 0 0-3.29 1.465v-.004Z"/><path d="M9.805 27.239 6.1 23.537l-3.231-3.23a9.833 9.833 0 0 1 2.78-5.54 9.778 9.778 0 0 1 5.528-2.78l6.94 6.94 1.485-1.485-.887-.887-1.485-1.484-1.78-1.781-1.485-1.485-2.013-2.012a11.92 11.92 0 0 0-7.791 3.481A11.9 11.9 0 0 0 .67 21.07l7.653 7.653 1.48-1.48v-.004Z"/><path d="m5.533 22.976-1.477 1.478 4.269 4.27 1.477-1.478-4.269-4.27Z"/></svg>
+											</div>
+											<span x-text="item"></span>
+										</div>
+										</template>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Proceso de convalidacion -->
+			<section class="bg-plomo" id="admision">
+				<div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6">
+					<div class="flex">
+						<h2 class="w-full mb-8 text-center text-2xl md:text-5xl font-bold">Proceso de convalidación</h2>
+					</div>
+
+					<div class="mt-6" x-data="slider" x-init="init">
+						<div class="relative w-full h-full flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar" x-ref="container">
+							<div class="snap-start snap-always shrink-0 w-full h-auto md:w-72 border border-morado p-5 pb-6">
+								<p class="condensed text-5xl font-bold text-morado">01</p>
+								<p>Realiza el pago por derecho de matrícula y primera cuota.</p>
+							</div>
+							<div class="snap-start snap-always shrink-0 w-full h-auto md:w-72 border border-morado p-5 pb-6">
+								<p class="condensed text-5xl font-bold text-morado">02</p>
+								<p>Ingresa tu solicitud virtual en el Portal del Estudiante. (Ver Guía).</p>
+							</div>
+							<div class="snap-start snap-always shrink-0 w-full h-auto md:w-72 border border-morado p-5 pb-6">
+								<p class="condensed text-5xl font-bold text-morado">03</p>
+								<p>Luego de 5 días hábiles verifica las asignaturas convalidadas.</p>
+							</div>
+							<div class="snap-start snap-always shrink-0 w-full h-auto md:w-72 border border-morado p-5 pb-6">
+								<p class="condensed text-5xl font-bold text-morado">04</p>
+								<p>Regulariza tus requisitos de convalidación en físico en la oficina de CAS.</p>
+							</div>
+							<div class="snap-start snap-always shrink-0 w-full h-auto md:w-72 border border-morado p-5 pb-6">
+								<p class="condensed text-5xl font-bold text-morado">05</p>
+								<p>Realiza el pago por el trámite de convalidación.</p>
+							</div>
+							<div class="snap-start snap-always shrink-0 w-full h-auto md:w-72 border border-morado p-5 pb-6">
+								<p class="condensed text-5xl font-bold text-morado">06</p>
+								<p>Descarga o solicita la resolución de convalidación en el Portal del Estudiante.</p>
+							</div>
+						</div>
+						<div class="flex justify-center md:justify-end gap-2 px-4 mt-4">
+							<button type="button" class="flex items-center justify-center transition" aria-label="previous slide" @click="scrollTo(prev)" :class="[prev != null ? 'cursor-pointer' : 'opacity-50']">
+								<div class="flex items-center size-12 text-morado">
+									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="currentColor" d="M20.026 40 .033 20.004l1.426-1.426 1.704-1.715 3.14-3.14 1.427-1.416L18.6 1.426 20.026 0l1.43 1.426 6.27 6.27-1.43 1.43-5.426 5.426h21.097v2.018h-25.97l1.425-1.426.593-.592 6.855-6.856-4.844-4.84L9.148 13.722l-3.14 3.141-1.415 1.43-1.715 1.7 17.148 17.151 4.848-4.84-6.86-6.863-.592-.59-1.426-1.418h25.97v2.008H20.86l5.726 5.73 1.14 1.129-7.7 7.7Z"/><path fill="currentColor" d="m20.307 34.015-9.451-9.448-1.426-1.43-1.704-1.7-1.426-1.43 1.415-1.426 1.715-1.714 1.426-1.426 9.451-9.452 1.426 1.43L10.152 19h31.815v2.007H10.145l.71.704L21.734 32.59l-1.426 1.426Z"/></svg>
+								</div>
+							</button>
+							<button type="button" class="flex items-center justify-center transition" aria-label="previous slide" @click="scrollTo(next)" :class="[next != null ? 'cursor-pointer' : 'opacity-50']">
+								<div class="flex items-center size-12 text-morado rotate-180">
+									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="currentColor" d="M20.026 40 .033 20.004l1.426-1.426 1.704-1.715 3.14-3.14 1.427-1.416L18.6 1.426 20.026 0l1.43 1.426 6.27 6.27-1.43 1.43-5.426 5.426h21.097v2.018h-25.97l1.425-1.426.593-.592 6.855-6.856-4.844-4.84L9.148 13.722l-3.14 3.141-1.415 1.43-1.715 1.7 17.148 17.151 4.848-4.84-6.86-6.863-.592-.59-1.426-1.418h25.97v2.008H20.86l5.726 5.73 1.14 1.129-7.7 7.7Z"/><path fill="currentColor" d="m20.307 34.015-9.451-9.448-1.426-1.43-1.704-1.7-1.426-1.43 1.415-1.426 1.715-1.714 1.426-1.426 9.451-9.452 1.426 1.43L10.152 19h31.815v2.007H10.145l.71.704L21.734 32.59l-1.426 1.426Z"/></svg>
+								</div>
+							</button>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<section>
+				<div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6">
+
+					<div class="grid">
+						<div class="relative w-full h-full flex overflow-x-auto snap-x snap-mandatory gap-6" x-data="{cards: [
+							{
+								image: './img/experiencia.webp',
+								title: 'Reconocimiento de experiencia laboral',
+								link: '#',
+							},
+							{
+								image: './img/tramite.webp',
+								title: 'Revisa el estado de tu trámite',
+								link: '#',
+							},
+							{
+								image: './img/realizar.webp',
+								title: 'Guía para realizar convalidaciones',
+								link: '#',
+							},
+						]}">
+							<template x-for="(item, index) in cards">
+							<div class="snap-start snap-always shrink-0 group flex w-full md:w-96 flex-col bg-morado hover:bg-purpura text-white">
+								<a x-bind:href="item.link">
+									<div class="flex flex-col pb-1">
+										<div class="overflow-hidden h-52">
+											<img x-bind:src="item.image" alt="" class="w-full h-full object-cover transition group-hover:scale-105" width="335" height="192" loading="lazy">
+										</div>
+										<div class="flex justify-center items-center gap-2 font-bold">
+											<p x-text="item.title"></p>
+											<div class="transition group-hover:translate-x-1 flex items-center scale-75 rotate-180">
+												<svg xmlns="http://www.w3.org/2000/svg" class="w-full" width="40" height="40" fill="none"><path fill="currentColor" d="M20.026 40 .033 20.004l1.426-1.426 1.704-1.715 3.14-3.14 1.427-1.416L18.6 1.426 20.026 0l1.43 1.426 6.27 6.27-1.43 1.43-5.426 5.426h21.097v2.018h-25.97l1.425-1.426.593-.592 6.855-6.856-4.844-4.84L9.148 13.722l-3.14 3.141-1.415 1.43-1.715 1.7 17.148 17.151 4.848-4.84-6.86-6.863-.592-.59-1.426-1.418h25.97v2.008H20.86l5.726 5.73 1.14 1.129-7.7 7.7Z"/><path fill="currentColor" d="m20.307 34.015-9.451-9.448-1.426-1.43-1.704-1.7-1.426-1.43 1.415-1.426 1.715-1.714 1.426-1.426 9.451-9.452 1.426 1.43L10.152 19h31.815v2.007H10.145l.71.704L21.734 32.59l-1.426 1.426Z"/></svg>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							</template>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- CAS -->
+			<section>
+				<div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6">
+
+					<div class="grid grid-cols-1 md:grid-cols-2">
+
+						<img src="./img/cas.webp" alt="" class="w-full h-full object-cover" loading="lazy">
+
+						<div class="grid bg-plomo gap-2 md:gap-4 p-4 md:p-6">
+							<!-- Telefonos -->
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+
+								<div>
+									<p class="font-bold md:text-lg">Arequipa</p>
+									<p class="flex items-center gap-2 text-sm md:text-lg">
+										<span>
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mt-2 w-5" viewBox="0 0 20 21"><g clip-path="url(#a)"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667" d="M18.334 14.396v2.5a1.667 1.667 0 0 1-1.817 1.666 16.492 16.492 0 0 1-7.192-2.558 16.25 16.25 0 0 1-5-5 16.492 16.492 0 0 1-2.558-7.225 1.667 1.667 0 0 1 1.658-1.817h2.5a1.667 1.667 0 0 1 1.667 1.433c.106.8.301 1.586.583 2.342A1.667 1.667 0 0 1 7.8 7.495L6.742 8.554a13.333 13.333 0 0 0 5 5l1.058-1.059a1.666 1.666 0 0 1 1.759-.375c.756.283 1.541.478 2.341.584a1.666 1.666 0 0 1 1.434 1.691Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .295h20v20H0z"/></clipPath></defs></svg>
+										</span>
+										(054) 412030 anexo 626
+									</p>
+								</div>
+								<div>
+									<p class="font-bold md:text-lg">Huancayo</p>
+									<p class="flex items-center gap-2 md:gap-4 text-sm md:text-lg">
+										<span>
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mt-2 w-5" viewBox="0 0 20 21"><g clip-path="url(#a)"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667" d="M18.334 14.396v2.5a1.667 1.667 0 0 1-1.817 1.666 16.492 16.492 0 0 1-7.192-2.558 16.25 16.25 0 0 1-5-5 16.492 16.492 0 0 1-2.558-7.225 1.667 1.667 0 0 1 1.658-1.817h2.5a1.667 1.667 0 0 1 1.667 1.433c.106.8.301 1.586.583 2.342A1.667 1.667 0 0 1 7.8 7.495L6.742 8.554a13.333 13.333 0 0 0 5 5l1.058-1.059a1.666 1.666 0 0 1 1.759-.375c.756.283 1.541.478 2.341.584a1.666 1.666 0 0 1 1.434 1.691Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .295h20v20H0z"/></clipPath></defs></svg>
+										</span>
+										(064) 481430 anexo 626
+									</p>
+								</div>
+								<div>
+									<p class="font-bold md:text-lg">Cusco</p>
+									<p class="flex items-center gap-2 text-sm md:text-lg">
+										<span>
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mt-2 w-5" viewBox="0 0 20 21"><g clip-path="url(#a)"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667" d="M18.334 14.396v2.5a1.667 1.667 0 0 1-1.817 1.666 16.492 16.492 0 0 1-7.192-2.558 16.25 16.25 0 0 1-5-5 16.492 16.492 0 0 1-2.558-7.225 1.667 1.667 0 0 1 1.658-1.817h2.5a1.667 1.667 0 0 1 1.667 1.433c.106.8.301 1.586.583 2.342A1.667 1.667 0 0 1 7.8 7.495L6.742 8.554a13.333 13.333 0 0 0 5 5l1.058-1.059a1.666 1.666 0 0 1 1.759-.375c.756.283 1.541.478 2.341.584a1.666 1.666 0 0 1 1.434 1.691Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .295h20v20H0z"/></clipPath></defs></svg>
+										</span>
+										(064) 481430 anexo 626
+									</p>
+								</div>
+								<div>
+									<p class="font-bold md:text-lg">Lima</p>
+									<p class="flex items-center gap-2 text-sm md:text-lg">
+										<span>
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mt-2 w-5" viewBox="0 0 20 21"><g clip-path="url(#a)"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667" d="M18.334 14.396v2.5a1.667 1.667 0 0 1-1.817 1.666 16.492 16.492 0 0 1-7.192-2.558 16.25 16.25 0 0 1-5-5 16.492 16.492 0 0 1-2.558-7.225 1.667 1.667 0 0 1 1.658-1.817h2.5a1.667 1.667 0 0 1 1.667 1.433c.106.8.301 1.586.583 2.342A1.667 1.667 0 0 1 7.8 7.495L6.742 8.554a13.333 13.333 0 0 0 5 5l1.058-1.059a1.666 1.666 0 0 1 1.759-.375c.756.283 1.541.478 2.341.584a1.666 1.666 0 0 1 1.434 1.691Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .295h20v20H0z"/></clipPath></defs></svg>
+										</span>
+										(084) 480070 anexo 626
+									</p>
+								</div>
+
+							</div>
+							<hr class="w-full border-morado my-2">
+							<div class="flex flex-col gap-4">
+								<!-- Mail -->
+								<p class="flex items-center gap-2 text-sm lg:text-lg">
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mt-2 w-5" viewBox="0 0 20 21"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667" clip-path="url(#a)"><path d="M3.334 3.629h13.333c.917 0 1.667.75 1.667 1.666v10c0 .917-.75 1.667-1.667 1.667H3.334c-.917 0-1.667-.75-1.667-1.667v-10c0-.916.75-1.666 1.667-1.666Z"/><path d="M18.334 5.295 10 11.13 1.667 5.295"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .295h20v20H0z"/></clipPath></defs></svg>
+									</span>
+									<span>convalidacionvirtual@continental.edu.pe</span>
+								</p>
+
+								<!-- Horario -->
+								<p class="flex items-start gap-2 text-sm lg:text-lg">
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mt-2 w-5" viewBox="0 0 20 21"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667" clip-path="url(#a)"><path d="M10 18.629a8.333 8.333 0 1 0 0-16.667 8.333 8.333 0 0 0 0 16.667Z"/><path d="M10 5.295v5l3.334 1.667"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 .295h20v20H0z"/></clipPath></defs></svg>
+									</span>
+									Lunes a viernes de 9:00 a. m. a 7:00 p. m. Sábados de 9:00 a. m. a 12:00 p. m.
+								</p>
+								<div class="flex">
+									<a href="#" class="inline-flex justify-center w-full rounded-full bg-morado px-8 pb-3 pt-2 font-bold text-white transition-colors duration-300 hover:bg-purpura lg:w-auto lg:px-6 lg:text-lg">Conversar por WhatsApp</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<footer class="bg-plomo min-h-96" hx-get="partials/footer.html" hx-trigger="intersect once"></footer>
+
+   </div>
+
+   <script src="/src/main.js" type="module"></script>
+</body>
+</html>
