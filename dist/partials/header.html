@@ -1,0 +1,78 @@
+<div class="hidden lg:block w-full bg-white">
+    <div class="flex flex-wrap gap-5 justify-end max-w-7xl mx-auto px-5 lg:px-6 py-2">
+
+        <div x-data="{ open: false }" @click.away="open=false">
+            <button @click="open = !open" class="relative flex flex-row items-center w-full px-0 text-left lg:w-auto hover:text-morado" :class="{'text-morado': open}">
+                <span class="text-lg lg:text-base">MÁS</span>
+                <div class="ml-auto lg:ml-2 transition-transform duration-200" :class="{'rotate-180': open, 'rotate-0': !open}">
+                	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a.999.999 0 0 0 1.42 0L17 10.59a1 1 0 0 0 0-1.42Z"/></svg>
+                </div>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="relative shadow z-20">
+                <div class="bg-white shadow lg:absolute lg:right-0 mt-3 lg:w-48 p-6" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                    <div class="px-4 lg:px-0">
+                        <div class="w-full">
+                            <ul>
+                                <li><a href="#" class="hover:text-morado">Estudiantes</a></li>
+                                <li><a href="#" class="hover:text-morado">Docentes</a></li>
+                                <li><a href="#" class="hover:text-morado">Padres</a></li>
+                                <li><a href="#" class="hover:text-morado">Egresados</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative" x-data="{ open: false }" @click.away="open=false">
+            <button @click="open = !open" class="w-4 text-sm hover:text-morado" aria-label="buscar">
+            	<svg class="absolute bottom-0.5 left-0" width="24" height="22" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 2.75C6.14154 2.75 2 6.89029 2 11.998C2 17.1056 6.14154 21.2459 11.25 21.2459C13.5335 21.2459 15.6238 20.4187 17.2373 19.0475L20.7182 22.5287C21.011 22.8216 21.4859 22.8217 21.7788 22.5288C22.0717 22.2359 22.0718 21.761 21.7789 21.4681L18.2983 17.9872C19.6714 16.3736 20.5 14.2826 20.5 11.998C20.5 6.89029 16.3585 2.75 11.25 2.75ZM3.5 11.998C3.5 7.71905 6.96962 4.25 11.25 4.25C15.5304 4.25 19 7.71905 19 11.998C19 16.2769 15.5304 19.7459 11.25 19.7459C6.96962 19.7459 3.5 16.2769 3.5 11.998Z" fill="currentColor"/></svg>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="relative shadow z-20">
+                <div class="bg-white lg:absolute lg:right-0 mt-3 lg:w-72 p-5" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                    <form action="https://ucontinental.edu.pe/" method="get">
+                        <div class="pt-2 relative mx-auto">
+                            <input class="w-full border-1 bg-white h-10 px-5 pr-10 text-sm focus:border-morado focus:ring-transparent" type="search" name="s" placeholder="Buscar" @keyup.escape="open=false">
+                            <button type="submit" class="absolute right-0 top-0 mt-3 mr-3">
+                            	<svg class="text-lg mt-1" width="24" height="22" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 2.75C6.14154 2.75 2 6.89029 2 11.998C2 17.1056 6.14154 21.2459 11.25 21.2459C13.5335 21.2459 15.6238 20.4187 17.2373 19.0475L20.7182 22.5287C21.011 22.8216 21.4859 22.8217 21.7788 22.5288C22.0717 22.2359 22.0718 21.761 21.7789 21.4681L18.2983 17.9872C19.6714 16.3736 20.5 14.2826 20.5 11.998C20.5 6.89029 16.3585 2.75 11.25 2.75ZM3.5 11.998C3.5 7.71905 6.96962 4.25 11.25 4.25C15.5304 4.25 19 7.71905 19 11.998C19 16.2769 15.5304 19.7459 11.25 19.7459C6.96962 19.7459 3.5 16.2769 3.5 11.998Z" fill="currentColor"/></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="w-full bg-white lg:border-y lg:border-neutral-300 z-10" :class="{'fixed': !istop}">
+    <div x-data="{ open: false }" class="flex flex-col max-w-7xl mx-auto px-5 lg:items-center lg:justify-between lg:flex-row lg:px-6" :class="{'bg-white': open}" @resize.window="open=false" @click.away="open=false" @scroll.window="scroll">
+
+        <div class="bg-white flex flex-row items-center justify-between z-10">
+            <a href="#" class="">
+                <img src="./img/logo.svg" alt="logo" class="w-fit h-8 lg:h-10" width="190" height="40">
+            </a>
+            <button class="lg:hidden my-3 w-6 h-8 relative focus:outline-none bg-white" @click="open = !open">
+                <span class="sr-only">Abrir menu</span>
+                <div class="block w-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <span aria-hidden="true" class="block absolute h-0.5 w-6 bg-current transition duration-300 ease-in-out" :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+                    <span aria-hidden="true" class="block absolute h-0.5 w-6 bg-current transition duration-300 ease-in-out" :class="{'opacity-0': open } "></span>
+                    <span aria-hidden="true" class="block absolute h-0.5 w-6 bg-current transition duration-300 ease-in-out" :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+                </div>
+            </button>
+        </div>
+        <div hx-get="partials/menu.html" hx-trigger="load" class="lg:min-h-[4.5rem]"></div>
+    </div>
+</div>

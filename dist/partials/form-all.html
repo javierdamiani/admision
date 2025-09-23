@@ -1,0 +1,148 @@
+<section class="relative bg-morado">
+
+ 	<div class="absolute w-full h-full">
+   		<img srcset="./img/fondo-presencial-mobile.webp 480w, ./img/fondo-presencial.webp 800w" sizes="(min-width: 992px) 100vw, 40vw" alt="" class="w-full h-[33.3rem] sm:h-full" loading="lazy">
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-12 px-5 md:px-6">
+        <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="relative lg:col-span-7">
+           		<div class="grid items-center h-full">
+	            	<div class="space-y-3">
+	           			<div class="bg-[#BEE1FF] w-fit py-1 pb-2 px-4 text-lg md:text-2xl text-purpura font-semibold condensed uppercase antialiased">inscripciones abiertas</div>
+						<div>
+	           				<div class="bg-morado w-fit py-1 pb-2 px-4 text-4xl md:text-7xl text-white font-semibold condensed uppercase antialiased">¡postula hoy!</div>
+	           				<div class="bg-morado w-fit py-1 pb-2 px-4 text-4xl md:text-7xl text-white font-semibold condensed uppercase antialiased">admisión uc</div>
+	           				<div class="bg-morado w-fit py-1 pb-2 px-4 text-4xl md:text-7xl text-white font-semibold condensed uppercase antialiased">2025-1</div>
+	              		</div>
+	           			<div class="bg-[#8C41FF] w-72 md:w-96 py-1 pb-2 px-4 text-lg md:text-xl text-white leading-5">
+							<p class="whitespace-pre-line md:whitespace-normal">No es necesario renunciar
+a tus sueños para
+alcanzar el éxito.
+<strong>Postula ahora y
+construye tu
+futuro.</strong></p>
+						</div>
+						<div class="w-72 md:w-96 pb-24 sm:pb-8">
+							<svg class="w-full" width="433" height="24" viewBox="0 0 433 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="226.557" height="8" fill="#8750FF"/><rect x="170.447" y="16" width="262.553" height="8" fill="#6400BE"/></svg>
+						</div>
+              		</div>
+             	</div>
+              	<!-- chica -->
+		        <div class="w-56 lg:w-80 xl:w-96 absolute bottom-0 -right-8">
+		            <img src="./img/estudiante.webp" alt="" loading="lazy" class="">
+		        </div>
+				<div class="sm:hidden absolute bottom-0 bg-gradient-to-t from-black w-svw h-10 -mx-5"></div>
+            </div>
+            <div class="lg:col-span-5 pb-6 lg:pb-12">
+                <div class="bg-white p-5 min-h-[33rem] lg:p-6 xl:ml-8">
+
+                    <p class="text-morado text-2xl font-semibold">Solicita información</p>
+                    <p class="text-lg">Tú eliges cómo estudiar</p>
+
+                    <form x-data="{ formStep: 1, firstStep:false }" x-ref="form" class="">
+                        <div x-cloak x-show="formStep==1">
+                            <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2">
+
+                                <div class="relative sm:col-span-2">
+                                    <p class="mb-px text-neutral-600">Modalidad de estudio</p>
+                                    <div class="flex no-scrollbar overflow-auto" x-data="{ check: 'PRES'}">
+                                        <div class="flex-auto min-w-fit">
+                                            <input type="radio" name="modalidad" class="hidden" id="modalidad-1" value="PRES" checked @click="check = 'PRES'">
+                                            <label for="modalidad-1" class="p-2 w-full flex items-center justify-center rounded-s-full text-sm md:text-base border border-neutral-200 transition-all duration-300 cursor-pointer" :class="{'bg-morado text-white border-morado hover:bg-morado': check == 'PRES', 'hover:bg-morado hover:text-white': check != 'PRES' }">Presencial</label>
+                                        </div>
+
+                                        <div class="flex-auto min-w-fit">
+                                            <input type="radio" name="modalidad" class="hidden" id="modalidad-2" value="GQT" @click="check = 'GQT'">
+                                            <label for="modalidad-2" class="p-2 w-full flex items-center justify-center text-sm md:text-base border border-neutral-200 border-x-0 transition-all duration-300 cursor-pointer" :class="{'bg-morado text-white border-morado hover:bg-morado': check == 'GQT', 'hover:bg-morado hover:text-white': check != 'GQT' }">Semipresencial</label>
+                                        </div>
+
+                                        <div class="flex-auto min-w-fit">
+                                            <input type="radio" name="modalidad" class="hidden" id="modalidad-3" value="DIS" @click="check = 'DIS'">
+                                            <label for="modalidad-3" class="p-2 w-full flex items-center justify-center rounded-e-full text-sm md:text-base border border-neutral-200 transition-all duration-300 cursor-pointer" :class="{'bg-morado text-white border-morado hover:bg-morado': check == 'DIS', 'hover:bg-morado hover:text-white': check != 'DIS' }">A Distancia</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative">
+                                    <input id="nombres" name="nombres" type="text" class="peer form-input" placeholder="Nombres" pattern="[\p{L}\p{M}\s]{3,}" oninvalid="setCustomValidity('Este campo no puede contener números ni caracteres especiales')" oninput="setCustomValidity('')" required/>
+                                    <label class="form-label" for="nombres">Nombres</label>
+                                </div>
+                                <div class="relative">
+                                    <input id="paterno" name="paterno" type="text" class="peer form-input" placeholder="Apellido paterno" pattern="[\p{L}\p{M}\s]{3,}" oninvalid="setCustomValidity('Este campo no puede contener números ni caracteres especiales')" oninput="setCustomValidity('')" required/>
+                                    <label class="form-label" for="paterno">Apellido paterno</label>
+                                </div>
+                                <div class="relative">
+                                    <input id="materno" name="materno" type="text" class="peer form-input" placeholder="Apellido materno" pattern="[\p{L}\p{M}\s]{3,}" oninvalid="setCustomValidity('Este campo no puede contener números ni caracteres especiales')" oninput="setCustomValidity('')" required>
+                                    <label class="form-label" for="materno">Apellido materno</label>
+                                </div>
+                                <div class="relative" x-data="bdate">
+                                    <input id="fecha" name="fecha" type="text" class="peer form-input" placeholder="dd/mm/aaaa" maxlength='10'
+                                    pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/(19[0-9]{2}|2[0-9]{3})" x-mask:dynamic="dateMask" oninvalid="setCustomValidity('Ingresa tu fecha de nacimiento en un formato válido')" oninput="setCustomValidity('')" @keyup="checkf" x-model="fecha" required>
+                                    <label class="form-label" for="fecha">Fecha de nacimiento</label>
+                                </div>
+                                <div class="relative">
+                                    <input id="email" name="email" type="text" class="peer form-input" placeholder="Correo electrónico" pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" oninvalid="setCustomValidity('Ingresa una dirección de correo electrónico válida, por ejemplo: nombre@mail.com')" oninput="setCustomValidity('')" required autocomplete="off">
+                                    <label class="form-label" for="email">Correo electrónico</label>
+                                </div>
+                                <div class="relative">
+                                    <input id="celular" name="celular" type="text" class="peer form-input" placeholder="Celular" maxlength='9' pattern="9[\p{N}]{8}" oninvalid="setCustomValidity('Ingresa un número de celular que contenga solo dígitos numéricos')" oninput="setCustomValidity('')" required>
+                                    <label class="form-label" for="celular">Celular</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div x-cloak x-show="formStep==2" >
+                            <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2">
+                                <div class="relative">
+                                    <select id="sede" name="sede" class="peer form-input" :required="firstStep ?? false">
+                                        <option value>Elige el sede</option>
+                                        <option value="1">Demo</option>
+                                    </select>
+                                    <label class="form-label" for="sede">Campus</label>
+                                </div>
+                                <div class="relative">
+                                    <select id="carrera" name="carrera" class="peer form-input" :required="firstStep ?? false">
+                                        <option value>Elige la carrera</option>
+                                        <option value="1">Demo</option>
+                                    </select>
+                                    <label class="form-label" for="carrera">Carrera</label>
+                                </div>
+                                <div class="relative">
+                                    <select id="contacto" name="contacto" class="peer form-input" :required="firstStep ?? false">
+                                        <option value>Medio de contacto</option>
+                                        <option value="2">Correo electrónico</option>
+                                        <option value="3">Llamada</option>
+                                        <option value="5">WhatsApp</option>
+                                    </select>
+                                    <label class="form-label" for="contacto">Medio de contacto</label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mt-6">
+                                <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-morado bg-gray-100 border-gray-300 rounded focus:ring-morado" :required="firstStep ?? false">
+                                <label for="link-checkbox" class="ms-2 text-sm">Otorgo mi consentimiento para que mis datos sean tratados según la <a href="https://ucontinental.edu.pe/politica-de-privacidad/" class="text-morado hover:underline" target="_blank">Política de Tratamiento de Datos</a>.</label>
+                            </div>
+                        </div>
+
+                        <div class="flex py-6 justify-between">
+                            <button x-cloak x-show="formStep > 1" @click="formStep -= 1, firstStep = false" type="button" class="flex items-center font-medium">
+                                <i class="lni lni-arrow-left mt-1 mr-2"></i> Volver
+                            </button>
+                            <div></div>
+                            <p><strong x-text="formStep"></strong> de 2</p>
+                        </div>
+
+                        <button x-cloak x-show="formStep < 2" @click="firstStep=$refs.form.reportValidity(); if(firstStep==true) {formStep += 1}" type="button" class="w-full pt-1.5 pb-2.5 font-bold transition-colors duration-300 transform bg-morado text-white rounded-full hover:bg-purpura" hx-post="save" hx-trigger="change from:#celular">
+                            Siguiente
+                        </button>
+
+                        <button x-cloak x-show="formStep === 2" type="submit" class="w-full pt-1.5 pb-2.5 font-bold transition-colors duration-300 transform bg-morado text-white rounded-full hover:bg-purpura">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+checknine()
+</script>

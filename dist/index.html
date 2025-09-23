@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admisión UC</title>
+
+  <script type="module" crossorigin src="./assets/main-3inzY03B.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-Dr7AhR2R.css">
+</head>
+<body>
+	<div class="flex flex-col min-h-screen overflow-hidden" x-data="atTop" x-init="height" @resize.window="height">
+
+    	<div class="hidden lg:block w-full bg-white">
+    	    <div class="flex flex-wrap gap-5 justify-end max-w-7xl mx-auto px-5 lg:px-6 py-2">
+    	
+    	        <div x-data="{ open: false }" @click.away="open=false">
+    	            <button @click="open = !open" class="relative flex flex-row items-center w-full px-0 text-left lg:w-auto hover:text-morado" :class="{'text-morado': open}">
+    	                <span class="text-lg lg:text-base">MÁS</span>
+    	                <div class="ml-auto lg:ml-2 transition-transform duration-200" :class="{'rotate-180': open, 'rotate-0': !open}">
+    	                	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a.999.999 0 0 0 1.42 0L17 10.59a1 1 0 0 0 0-1.42Z"/></svg>
+    	                </div>
+    	            </button>
+    	            <div x-show="open" x-transition:enter="transition ease-out duration-100"
+    	                x-transition:enter-start="transform opacity-0 scale-95"
+    	                x-transition:enter-end="transform opacity-100 scale-100"
+    	                x-transition:leave="transition ease-in duration-75"
+    	                x-transition:leave-start="transform opacity-100 scale-100"
+    	                x-transition:leave-end="transform opacity-0 scale-95"
+    	                class="relative shadow z-20">
+    	                <div class="bg-white shadow lg:absolute lg:right-0 mt-3 lg:w-48 p-6" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    	                    <div class="px-4 lg:px-0">
+    	                        <div class="w-full">
+    	                            <ul>
+    	                                <li><a href="#" class="hover:text-morado">Estudiantes</a></li>
+    	                                <li><a href="#" class="hover:text-morado">Docentes</a></li>
+    	                                <li><a href="#" class="hover:text-morado">Padres</a></li>
+    	                                <li><a href="#" class="hover:text-morado">Egresados</a></li>
+    	                            </ul>
+    	                        </div>
+    	                    </div>
+    	                </div>
+    	            </div>
+    	        </div>
+    	
+    	        <div class="relative" x-data="{ open: false }" @click.away="open=false">
+    	            <button @click="open = !open" class="w-4 text-sm hover:text-morado" aria-label="buscar">
+    	            	<svg class="absolute bottom-0.5 left-0" width="24" height="22" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 2.75C6.14154 2.75 2 6.89029 2 11.998C2 17.1056 6.14154 21.2459 11.25 21.2459C13.5335 21.2459 15.6238 20.4187 17.2373 19.0475L20.7182 22.5287C21.011 22.8216 21.4859 22.8217 21.7788 22.5288C22.0717 22.2359 22.0718 21.761 21.7789 21.4681L18.2983 17.9872C19.6714 16.3736 20.5 14.2826 20.5 11.998C20.5 6.89029 16.3585 2.75 11.25 2.75ZM3.5 11.998C3.5 7.71905 6.96962 4.25 11.25 4.25C15.5304 4.25 19 7.71905 19 11.998C19 16.2769 15.5304 19.7459 11.25 19.7459C6.96962 19.7459 3.5 16.2769 3.5 11.998Z" fill="currentColor"/></svg>
+    	            </button>
+    	            <div x-show="open" x-transition:enter="transition ease-out duration-100"
+    	                x-transition:enter-start="transform opacity-0 scale-95"
+    	                x-transition:enter-end="transform opacity-100 scale-100"
+    	                x-transition:leave="transition ease-in duration-75"
+    	                x-transition:leave-start="transform opacity-100 scale-100"
+    	                x-transition:leave-end="transform opacity-0 scale-95"
+    	                class="relative shadow z-20">
+    	                <div class="bg-white lg:absolute lg:right-0 mt-3 lg:w-72 p-5" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    	                    <form action="https://ucontinental.edu.pe/" method="get">
+    	                        <div class="pt-2 relative mx-auto">
+    	                            <input class="w-full border-1 bg-white h-10 px-5 pr-10 text-sm focus:border-morado focus:ring-transparent" type="search" name="s" placeholder="Buscar" @keyup.escape="open=false">
+    	                            <button type="submit" class="absolute right-0 top-0 mt-3 mr-3">
+    	                            	<svg class="text-lg mt-1" width="24" height="22" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 2.75C6.14154 2.75 2 6.89029 2 11.998C2 17.1056 6.14154 21.2459 11.25 21.2459C13.5335 21.2459 15.6238 20.4187 17.2373 19.0475L20.7182 22.5287C21.011 22.8216 21.4859 22.8217 21.7788 22.5288C22.0717 22.2359 22.0718 21.761 21.7789 21.4681L18.2983 17.9872C19.6714 16.3736 20.5 14.2826 20.5 11.998C20.5 6.89029 16.3585 2.75 11.25 2.75ZM3.5 11.998C3.5 7.71905 6.96962 4.25 11.25 4.25C15.5304 4.25 19 7.71905 19 11.998C19 16.2769 15.5304 19.7459 11.25 19.7459C6.96962 19.7459 3.5 16.2769 3.5 11.998Z" fill="currentColor"/></svg>
+    	                            </button>
+    	                        </div>
+    	                    </form>
+    	                </div>
+    	            </div>
+    	        </div>
+    	
+    	    </div>
+    	</div>
+    	
+    	<div class="w-full bg-white lg:border-y lg:border-neutral-300 z-10" :class="{'fixed': !istop}">
+    	    <div x-data="{ open: false }" class="flex flex-col max-w-7xl mx-auto px-5 lg:items-center lg:justify-between lg:flex-row lg:px-6" :class="{'bg-white': open}" @resize.window="open=false" @click.away="open=false" @scroll.window="scroll">
+    	
+    	        <div class="bg-white flex flex-row items-center justify-between z-10">
+    	            <a href="#" class="">
+    	                <img src="./img/logo.svg" alt="logo" class="w-fit h-8 lg:h-10" width="190" height="40">
+    	            </a>
+    	            <button class="lg:hidden my-3 w-6 h-8 relative focus:outline-none bg-white" @click="open = !open">
+    	                <span class="sr-only">Abrir menu</span>
+    	                <div class="block w-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    	                    <span aria-hidden="true" class="block absolute h-0.5 w-6 bg-current transition duration-300 ease-in-out" :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+    	                    <span aria-hidden="true" class="block absolute h-0.5 w-6 bg-current transition duration-300 ease-in-out" :class="{'opacity-0': open } "></span>
+    	                    <span aria-hidden="true" class="block absolute h-0.5 w-6 bg-current transition duration-300 ease-in-out" :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+    	                </div>
+    	            </button>
+    	        </div>
+    	        <div hx-get="partials/menu.html" hx-trigger="load" class="lg:min-h-[4.5rem]"></div>
+    	    </div>
+    	</div>
+
+	    <main>
+
+		<div class="min-h-96" hx-get="partials/form-all.html" hx-trigger="intersect once"></div>
+
+	    <!-- Modalidades de Admisión -->
+	    <section class="bg-white">
+
+	        <div class="max-w-7xl mx-auto space-y-10 py-16 px-5 md:px-6">
+		        <h2 class="text-center text-2xl md:text-5xl font-bold">Modalidades de admisión</h2>
+
+				<div x-data="{ selectedTab: 'tab1' }" class="w-full">
+					<div x-on:keydown.right.prevent="$focus.wrap().next()" x-on:keydown.left.prevent="$focus.wrap().previous()" class="max-w-3xl mx-auto flex justify-between overflow-x-auto border-b border-black/50" role="tablist" aria-label="tab options">
+						<button x-on:click="selectedTab = 'tab1'" x-bind:aria-selected="selectedTab === 'tab1'" x-bind:tabindex="selectedTab === 'tab1' ? '0' : '-1'" x-bind:class="selectedTab === 'tab1' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="flex-shrink-0 h-min px-5 py-2" type="button" role="tab" aria-controls="tabpaneltab1" >Estoy en el colegio</button>
+						<button x-on:click="selectedTab = 'tab2'" x-bind:aria-selected="selectedTab === 'tab2'" x-bind:tabindex="selectedTab === 'tab2' ? '0' : '-1'" x-bind:class="selectedTab === 'tab2' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="flex-shrink-0 h-min px-5 py-2" type="button" role="tab" aria-controls="tabpaneltab2" >Ya terminé el colegio</button>
+						<button x-on:click="selectedTab = 'tab3'" x-bind:aria-selected="selectedTab === 'tab3'" x-bind:tabindex="selectedTab === 'tab3' ? '0' : '-1'" x-bind:class="selectedTab === 'tab3' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="flex-shrink-0 h-min px-5 py-2" type="button" role="tab" aria-controls="tabpaneltab3" >Quiero trasladarme</button>
+						<button x-on:click="selectedTab = 'tab4'" x-bind:aria-selected="selectedTab === 'tab4'" x-bind:tabindex="selectedTab === 'tab4' ? '0' : '-1'" x-bind:class="selectedTab === 'tab4' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="flex-shrink-0 h-min px-5 py-2" type="button" role="tab" aria-controls="tabpaneltab4" >Otras modalidades</button>
+					</div>
+					<div class="px-2 py-4 mt-4 text-black">
+						<div x-cloak x-show="selectedTab === 'tab1'" id="tabpaneltab1" role="tabpanel" aria-label="groups">
+
+							<div class="relative w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" x-ref="container">
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+							</div>
+
+						</div>
+						<div x-cloak x-show="selectedTab === 'tab2'" id="tabpaneltab2" role="tabpanel" aria-label="groups">
+
+							<div class="relative w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" x-ref="container">
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+							</div>
+
+						</div>
+						<div x-cloak x-show="selectedTab === 'tab3'" id="tabpaneltab3" role="tabpanel" aria-label="groups">
+
+							<div class="relative w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" x-ref="container">
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+							</div>
+
+						</div>
+						<div x-cloak x-show="selectedTab === 'tab4'" id="tabpaneltab4" role="tabpanel" aria-label="groups">
+
+							<div class="relative w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" x-ref="container">
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+								<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden bg-plomo text-black transition hover:bg-purpura hover:text-white">
+									<a href="#">
+										<div class="flex flex-col gap-2 p-6">
+											<h3 class="text-balance text-xl lg:text-2xl font-semibold" aria-describedby="featureDescription">Traslado externo A</h3>
+											<p id="featureDescription" class="text-pretty text-sm">Si cuentas con un mínimo de 72 créditos aprobados</p>
+											<div class="mt-auto flex items-center gap-2 text-base font-bold">
+												<p>Más Información</p>
+									            <span class="mt-1.5 transition group-hover:translate-x-1">
+									            	<svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+									            </span>
+											</div>
+										</div>
+									</a>
+								</article>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+	    <!-- Estadísticas -->
+	    <section class="bg-morado">
+
+	        <div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6" x-data="slider" x-init="init">
+
+				<div class="relative w-full flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" x-ref="container">
+
+					<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden text-white">
+						<div class="flex flex-col gap-2 p-6">
+							<p class="text-balance text-2xl md:text-4xl font-semibold">95%</p>
+							<p class="text-pretty">De nuestros egresados <span class="bg-lila px-1 pb-px">consigue</span> <span class="bg-lila px-1 pb-px">empleo</span> en su área de estudio en los primeros 6 meses.</p>
+						</div>
+					</article>
+					<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden text-white">
+						<div class="flex flex-col gap-2 p-6">
+							<p class="text-balance text-2xl md:text-4xl font-semibold">+70%</p>
+							<p class="text-pretty">De nuestros estudiantes desarrolla su propio <span class="bg-lila px-1 pb-px">emprendimiento</span> antes de egresar.</p>
+						</div>
+					</article>
+					<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden text-white">
+						<div class="flex flex-col gap-2 p-6">
+							<p class="text-balance text-2xl md:text-4xl font-semibold">150</p>
+							<p class="text-pretty">Convenios con universidades nacionales e internacionales para <span class="bg-lila px-1 pb-px">intercambios académicos</span>.</p>
+						</div>
+					</article>
+					<article class="snap-start snap-always shrink-0 group flex w-full md:w-72 flex-col overflow-hidden text-white">
+						<div class="flex flex-col gap-2 p-6">
+							<p class="text-balance text-2xl md:text-4xl font-semibold">80%</p>
+							<p class="text-pretty">De estudiantes realiza prácticas pre-profesionales en <span class="bg-lila px-1 pb-px">empresas</span> <span class="bg-lila px-1 pb-px">reconocidas</span>.</p>
+						</div>
+					</article>
+
+				</div>
+
+	        </div>
+	    </section>
+
+		<!-- Campus -->
+		<section class="bg-plomo">
+			<div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6">
+
+				<div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4 h-full">
+
+					<div class="relative w-full overflow-hidden h-full" x-init="autoplay" x-data="carousel({
+	intervalTime: 4000,
+	slides: [
+		{
+			imgSrc: './img/campus-arequipa.webp',
+			imgAlt: 'campus arequipa',
+		},
+		{
+			imgSrc: './img/campus-hyo.webp',
+			imgAlt: 'campus huancayo',
+		},
+		{
+			imgSrc: './img/campus-cus.webp',
+			imgAlt: 'campus cusco',
+		},
+		{
+			imgSrc: './img/campus-lima.webp',
+			imgAlt: 'campus los olivos',
+		},
+	],
+})"
+					>
+
+						<div class="relative aspect-video md:h-full w-full">
+							<template x-for="(slide, index) in slides">
+								<div x-show="currentSlideIndex == index + 1" class="absolute inset-0" x-transition.opacity.duration.1000ms>
+									<img class="absolute w-full h-full inset-0 object-cover" x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" loading="lazy">
+								</div>
+							</template>
+						</div>
+
+						<div class="absolute rounded-sm bottom-3 md:bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-4 px-1.5 py-1 md:px-2" role="group" aria-label="slides" >
+							<template x-for="(slide, index) in slides">
+								<button class="size-3 rounded-full transition bg-white" x-on:click="currentSlideIndex = index + 1" x-bind:class="[currentSlideIndex === index + 1 ? 'bg-white' : 'bg-white/50']" x-bind:aria-label="'slide ' + (index + 1)"></button>
+							</template>
+						</div>
+
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+						<div class="row-span-1 bg-white p-4">
+							<h3 class="mb-2 text-xl font-bold">Convalidaciones</h3>
+							<p class="text-base leading-tight">Reconocemos tus estudios previos para reducir tu carga o duración de la carrera.</p>
+							<a href="#" class="mt-6 flex items-center gap-2 text-base font-bold text-morado group">
+								<p>Más información</p>
+							    <span class="mt-1.5 transition group-hover:translate-x-1">
+								    <svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#6400BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								</span>
+							</a>
+						</div>
+						<div class="row-span-1 bg-white p-4">
+							<h3 class="mb-2 text-xl font-bold">Simulacro de admisión</h3>
+							<p class="text-base leading-tight">Prepárate para el ingreso con nuestro simulacro de admisión y mide tu desempeño.</p>
+							<a href="#" class="mt-6 flex items-center gap-2 text-base font-bold text-morado group">
+								<p>Más información</p>
+							    <span class="mt-1.5 transition group-hover:translate-x-1">
+								    <svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#6400BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								</span>
+							</a>
+						</div>
+						<div class="row-span-1 bg-white p-4">
+							<h3 class="mb-2 text-xl font-bold">Visita guiada</h3>
+							<p class="text-base leading-tight">Visita nuestro campus y descubre los espacios diseñados para tu aprendizaje.</p>
+							<a href="#" class="mt-6 flex items-center gap-2 text-base font-bold text-morado group">
+								<p>Agendar visita</p>
+							    <span class="mt-1.5 transition group-hover:translate-x-1">
+								    <svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#6400BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								</span>
+							</a>
+						</div>
+						<div class="row-span-1 bg-white p-4">
+							<h3 class="mb-2 text-xl font-bold">Test vocacional</h3>
+							<p class="text-base leading-tight">Realiza el test y descubre las carreras alineadas a tus intereses y habilidades.</p>
+							<a href="#" class="mt-6 flex items-center gap-2 text-base font-bold text-morado group">
+								<p>Más información</p>
+							    <span class="mt-1.5 transition group-hover:translate-x-1">
+								    <svg class="w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#6400BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								</span>
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+
+	    <!-- Carreras -->
+		<section class="bg-white">
+			<div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6">
+				<h2 class="text-center text-2xl md:text-5xl font-bold md:whitespace-pre-line">Explora nuestras carreras
+de pregrado y elige tu futuro</h2>
+
+				<div class="w-full mt-8" x-data="search_carrera">
+
+					<div class="flex flex-col md:flex-row gap-3 justify-between">
+						<div class="relative flex w-full max-w-lg">
+							<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="absolute left-2.5 top-1/2 size-5 -translate-y-1/2 text-morado"> <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
+							<input type="search" class="w-full rounded-radius border-b border-0 bg-white pl-10 pr-2 py-1 focus:ring-transparent focus:border-morado" name="s_carrera" placeholder="Buscar carrera por nombre" aria-label="search_carrera" x-model="search"/>
+						</div>
+						<div class="flex flex-row gap-3">
+							<div class="relative flex w-full max-w-xs flex-col gap-1">
+								<label for="s_campus" class="sr-only">Campus</label>
+							    <select id="s_campus" name="s_campus" class="w-full appearance-none border-0 border-b px-4 py-2 mr-4 text-sm sm:text-base focus:ring-transparent focus:border-morado" x-model="search">
+							        <option value="" selected>Campus</option>
+							        <option value="Arequipa">Arequipa</option>
+							        <option value="Cusco">Cusco</option>
+							        <option value="Huancayo">Huancayo</option>
+							        <option value="Lima">Lima</option>
+							    </select>
+							</div>
+							<div class="relative flex w-full max-w-xs flex-col gap-1">
+								<label for="s_modalidad" class="sr-only">Modalidad</label>
+							    <select id="s_modalidad" name="s_modalidad" class="w-full appearance-none border-0 border-b px-4 py-2 mr-4 text-sm sm:text-base focus:ring-transparent focus:border-morado" x-model="search">
+							        <option value="" selected>Modalidad</option>
+							        <option value="Presencial">Presencial</option>
+							        <option value="Semipresencial">Semipresencial</option>
+							        <option value="A Distancia">A Distancia</option>
+							        <option value="Lima">Lima</option>
+							    </select>
+							</div>
+							<div class="relative flex w-full max-w-xs flex-col gap-1">
+								<label for="s_facultad" class="sr-only">Facultad</label>
+							    <select id="s_facultad" name="s_facultad" class="w-full appearance-none border-0 border-b px-4 py-2 mr-4 text-sm sm:text-base focus:ring-transparent focus:border-morado" x-model="search">
+							        <option value="" selected>Facultad</option>
+							        <option value="Ciencias de la Empresa">Ciencias de la Empresa</option>
+							        <option value="Ciencias de la Salud">Ciencias de la Salud</option>
+							        <option value="Derecho">Derecho</option>
+							        <option value="Humanidades">Humanidades</option>
+							        <option value="Ingeniería">Ingeniería</option>
+							    </select>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt-8" x-data="slider" x-init="init">
+
+						<div class="relative w-full h-full flex overflow-x-auto snap-x snap-mandatory gap-6" x-ref="container">
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Arequipa - Cusco</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial - A distancia</p>
+										</div>
+									</div>
+									<div class="mt-4 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="h-auto p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Lima - Huancayo</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial</p>
+										</div>
+									</div>
+									<div class="mt-4 flex-1 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Arequipa - Cusco</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial - A distancia</p>
+										</div>
+									</div>
+									<div class="mt-4 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="h-auto p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Lima - Huancayo</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial</p>
+										</div>
+									</div>
+									<div class="mt-4 flex-1 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Arequipa - Cusco</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial - A distancia</p>
+										</div>
+									</div>
+									<div class="mt-4 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="h-auto p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Lima - Huancayo</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial</p>
+										</div>
+									</div>
+									<div class="mt-4 flex-1 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Arequipa - Cusco</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial - A distancia</p>
+										</div>
+									</div>
+									<div class="mt-4 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="h-auto p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Lima - Huancayo</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial</p>
+										</div>
+									</div>
+									<div class="mt-4 flex-1 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Arequipa - Cusco</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial - A distancia</p>
+										</div>
+									</div>
+									<div class="mt-4 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="bg-plomo snap-start snap-always shrink-0 w-full md:w-72 overflow-hidden" x-show="show_item($el)">
+								<img src="./img/carrera.webp" class="w-full h-48" alt="" loading="lazy">
+								<div class="h-auto p-4 md:p-5">
+									<div class="space-y-3 h-40">
+										<h3 class="text-lg font-bold">Nombre de la carrera profesional</h3>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="30" height="31" fill="none"><path fill="#6802C1" d="M24.864 22.46H4.39a2.397 2.397 0 0 0-.64 1.628c0 .624.242 1.196.64 1.628h20.474a2.393 2.393 0 0 0 0-3.256Zm-.547 2.239H4.939a1.391 1.391 0 0 1 0-1.222h19.378a1.39 1.39 0 0 1 0 1.222ZM4.088 12.353c.323.54.824.916 1.39 1.101l9.15-5.14 9.147 5.14a2.52 2.52 0 0 0 1.39-1.1 2.38 2.38 0 0 0 .287-1.724l-3.221-1.805-4.257-2.392-1.047-.587-1.252-.705-1.047-.586-1.047.587-1.252.704-1.047.587-4.257 2.392-3.221 1.805a2.378 2.378 0 0 0 .286 1.723h-.002Zm.715-1.106 7.524-4.224 1.047-.592 1.252-.705 1.252.705 1.047.592 7.524 4.224a1.393 1.393 0 0 1-.628 1.054l-2.856-1.6-5.294-2.973-1.047-.592-1.047.592-5.294 2.973-2.856 1.6a1.355 1.355 0 0 1-.438-.458 1.377 1.377 0 0 1-.19-.596h.004Z"/><path fill="#6802C1" d="M10.654 14.988v7.793h1.045v-7.305a4.976 4.976 0 0 1 2.927-.944c1.097 0 2.113.351 2.932.946v7.303h1.044V14.99a6.035 6.035 0 0 0-3.976-1.48c-1.527 0-2.92.559-3.974 1.476l.002.002Z"/><path fill="#6802C1" d="M9.4 22.783v-8.71a8.475 8.475 0 0 1 5.228-1.787c1.979 0 3.796.669 5.229 1.787v8.708H20.9v-9.18a9.522 9.522 0 0 0-6.273-2.332c-2.41 0-4.61.882-6.274 2.333v9.181H9.4Z"/><path fill="#6802C1" d="M14.628 15.75c-.644 0-1.23.236-1.673.623v6.41H14v-5.878a1.496 1.496 0 0 1 1.256 0v5.878H16.3V16.37a2.537 2.537 0 0 0-1.673-.622v.001ZM23.2 12.286h-1.044v10.496H23.2V12.286ZM7.096 12.286H6.051V22.78h1.045V12.286Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Lima - Huancayo</p>
+										</div>
+										<div class="flex items-center gap-2">
+											<div>
+												<svg width="31" height="31" fill="none"><path fill="#6802C1" d="M15.87 6.55a3.969 3.969 0 0 0-3.97 3.97 3.972 3.972 0 0 0 3.97 3.97 3.972 3.972 0 0 0 3.97-3.97 3.969 3.969 0 0 0-3.97-3.97Zm0 6.894a2.923 2.923 0 0 1-2.924-2.924 2.924 2.924 0 1 1 5.847 0 2.926 2.926 0 0 1-2.923 2.924ZM22.938 16.796l-.48-1.042h-2.533l-.693 1.042h2.554l3.8 8.157H6.159l3.801-8.157h2.548l-.692-1.042H9.288l-.481 1.042L5 24.953V26h21.745v-1.047l-3.807-8.157Z"/><path fill="#6802C1" d="M15.87 4.25a6.27 6.27 0 0 0-6.27 6.27c0 1.269.375 2.453 1.025 3.442l.085.127 1.105 1.665.692 1.042.83 1.253.698 1.046 1.206 1.819.629.946.629-.946 1.205-1.819.698-1.046.83-1.253.693-1.042 1.084-1.634.105-.158a6.205 6.205 0 0 0 1.031-3.442 6.275 6.275 0 0 0-6.275-6.27Zm4.377 9.136h-.005a1.94 1.94 0 0 1-.09.132l-1.48 2.236-.37.555-.323.487-.835 1.253-.693 1.046-.581.873-.582-.873-.692-1.046-.836-1.253-.322-.487-.37-.555-1.48-2.236a1.98 1.98 0 0 1-.09-.132h-.006a5.216 5.216 0 0 1-.85-2.866 5.226 5.226 0 0 1 5.228-5.223 5.226 5.226 0 0 1 5.228 5.223c0 1.058-.311 2.04-.85 2.866Z"/><path fill="#6802C1" d="M23.62 23.7H8.12l.49-1.046 1.661-3.558.486-1.047h2.58l.698 1.047H11.43l-1.66 3.558H21.98l-1.66-3.558h-2.617l.698-1.047h2.585l.487 1.047 1.66 3.558.486 1.046Z"/></svg>
+											</div>
+											<p class="text-sm font-normal">Presencial</p>
+										</div>
+									</div>
+									<div class="mt-4 flex-1 space-y-2 text-center">
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full bg-morado pb-3 pt-2 font-bold text-white hover:bg-purpura">
+											<div class="mt-1">
+												<svg width="20" height="20" fill="none"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M.833 10S4.167 3.333 10 3.333 19.167 10 19.167 10 15.833 16.667 10 16.667.833 10 .833 10Z"/><path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg>
+											</div>
+											<span>Ver detalle</span>
+										</a>
+										<a href="#" class="flex items-center justify-center gap-2 rounded-full border-2 border-morado pb-3 pt-2 font-bold text-morado hover:border-purpura hover:text-purpura">
+											<div class="mt-1">
+												<svg width="21" height="20" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12.5v3.333a1.666 1.666 0 0 1-1.667 1.667H4.667A1.667 1.667 0 0 1 3 15.833V12.5M6.333 8.333 10.5 12.5l4.167-4.167M10.5 12.5v-10"/></svg>
+											</div>
+											<span>Descargar brochure</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex justify-center md:justify-end gap-2 px-4 mt-6">
+							<button type="button" class="flex items-center justify-center transition" aria-label="previous slide" @click="scrollTo(prev)" :class="[prev != null ? 'cursor-pointer' : 'opacity-50']">
+								<div class="flex items-center size-12 text-morado">
+									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="currentColor" d="M20.026 40 .033 20.004l1.426-1.426 1.704-1.715 3.14-3.14 1.427-1.416L18.6 1.426 20.026 0l1.43 1.426 6.27 6.27-1.43 1.43-5.426 5.426h21.097v2.018h-25.97l1.425-1.426.593-.592 6.855-6.856-4.844-4.84L9.148 13.722l-3.14 3.141-1.415 1.43-1.715 1.7 17.148 17.151 4.848-4.84-6.86-6.863-.592-.59-1.426-1.418h25.97v2.008H20.86l5.726 5.73 1.14 1.129-7.7 7.7Z"/><path fill="currentColor" d="m20.307 34.015-9.451-9.448-1.426-1.43-1.704-1.7-1.426-1.43 1.415-1.426 1.715-1.714 1.426-1.426 9.451-9.452 1.426 1.43L10.152 19h31.815v2.007H10.145l.71.704L21.734 32.59l-1.426 1.426Z"/></svg>
+								</div>
+							</button>
+							<button type="button" class="flex items-center justify-center transition" aria-label="previous slide" @click="scrollTo(next)" :class="[next != null ? 'cursor-pointer' : 'opacity-50']">
+								<div class="flex items-center size-12 text-morado rotate-180">
+									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"><path fill="currentColor" d="M20.026 40 .033 20.004l1.426-1.426 1.704-1.715 3.14-3.14 1.427-1.416L18.6 1.426 20.026 0l1.43 1.426 6.27 6.27-1.43 1.43-5.426 5.426h21.097v2.018h-25.97l1.425-1.426.593-.592 6.855-6.856-4.844-4.84L9.148 13.722l-3.14 3.141-1.415 1.43-1.715 1.7 17.148 17.151 4.848-4.84-6.86-6.863-.592-.59-1.426-1.418h25.97v2.008H20.86l5.726 5.73 1.14 1.129-7.7 7.7Z"/><path fill="currentColor" d="m20.307 34.015-9.451-9.448-1.426-1.43-1.704-1.7-1.426-1.43 1.415-1.426 1.715-1.714 1.426-1.426 9.451-9.452 1.426 1.43L10.152 19h31.815v2.007H10.145l.71.704L21.734 32.59l-1.426 1.426Z"/></svg>
+								</div>
+							</button>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonio -->
+		<section class="bg-purpura sm:bg-white relative">
+   			<div class="max-w-7xl mx-auto py-8 px-5 md:px-6">
+      			<div class="bg-purpura grid grid-cols-1 md:grid-cols-2 gap-4">
+	            	<div class="">
+						<img src="./img/testimonio.webp" loading="lazy" alt="" class="h-full w-full object-cover">
+					</div>
+					<div class="md:p-6 space-y-3 lg:space-y-4">
+						<div class="w-20 md:w-28">
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" width="77" height="59" fill="none"><path fill="#8750FF" class="scale-75 md:scale-100" d="m91.406.032 2.142 3.327c0 .412-5.05 3.475-5.819 4.053-9.686 7.279-20.731 18.247-20.668 31.2.01 2.27.882 5.714 2.485 7.41.984 1.042 4.03 2.843 5.462 2.642 1.433-.2 9.775-9.886 12.069-10.862 6.93 2.506 12.898 8.37 14.44 15.765 5.67 27.136-40.236 35.257-46.969 5.675-2.368-10.401.099-21.127 5.18-30.28l.653.31c.106-.144-.296-.666-.151-1.068.398-1.124 4.862-6.788 5.974-8.1 2.142-2.534 5.095-5.371 7.587-7.577C75.576 10.937 90.404-.67 91.406.032ZM37.794.01c.088 1.153 2.321 2.789 1.616 3.881-2.541 1.622-5.078 3.405-7.421 5.29-9.03 7.272-21.007 19.791-18.156 32.568.713 3.194 4.778 7.8 8.286 6.567l11.105-10.43c.811-.345 4.838 2.111 5.745 2.725 15.544 10.549 10.642 33.114-7.5 36.78-9.463 1.913-20.138-.614-26.07-8.537C1.616 63.81-.33 55.414.046 48.83 1.242 27.964 17.898 12.995 34 2.013L37.794.01Z"/></svg>
+						</div>
+						<p class="text-white lg:text-xl">“La elección de estudiar medicina humana fue acertada, ya que no solo cuenta con buena infraestructura y materiales, sino también con un grupo humano comprometido que destaca por su calidez y profesionalismo.”</p>
+						<div class="max-w-max">
+							<div class="bg-[#BEE1FF] px-4 py-2">
+								<p class="text-purpura text-lg font-normal lg:text-center">Andy Aquino - Estudiante de Medicina Humana</p>
+							</div>
+							<div class="w-full">
+								<div class="mt-1.5 bg-[#BEE1FF] pb-1.5"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Noticias y Eventos -->
+		<section class="bg-white">
+			<div class="max-w-7xl mx-auto py-8 lg:py-16 px-5 md:px-6">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="space-y-8">
+						<h2 class="text-2xl md:text-5xl font-bold">Noticias y Eventos</h2>
+						<p class="md:text-lg"> Descubre fechas importantes, novedades académicas y actividades que te acercan a la experiencia Continental. ¡No te pierdas ninguna oportunidad para dar el siguiente paso hacia tu futuro profesional!</p>
+						<div class="space-x-4">
+							<a href="#" class="inline-flex rounded-full bg-morado px-6 pb-3 pt-2 text-lg font-bold text-white border border-morado transition-colors duration-300 hover:bg-purpura hover:border-purpura">Ver noticias</a>
+							<a href="#" class="rounded-full px-6 pb-3 pt-2 text-lg font-bold text-morado border-2 border-morado transition-colors duration-300 hover:border-purpura hover:text-purpura">Ver eventos</a>
+						</div>
+					</div>
+
+					<!-- Eventos -->
+					<div class="relative" x-data="carousel({
+slides: [
+{
+	imgSrc: './img/campus-hyo.webp',
+	imgAlt: 'campus huancayo',
+	type: 'Noticia',
+	title: 'Facultad de Derecho UC impulsa el aprendizaje activo con simulación de audiencias.',
+	date: '3 de julio del 2024',
+},
+{
+	imgSrc: './img/campus-arequipa.webp',
+	imgAlt: 'campus arequipa',
+	type: 'Evento',
+	title: 'Inscríbete y participa de nuestro Festival de Carreras en Ayacucho.',
+	date: '1 de diciembre del 2024',
+},
+{
+	imgSrc: './img/campus-cus.webp',
+	imgAlt: 'campus cusco',
+	type: 'Noticia',
+	title: 'Estudiantes de Ingeniería Civil implementan tecnología para mejorar la seguridad en obras.',
+	date: '1 de diciembre del 2024',
+},
+],
+					})">
+						<div class="w-full flex overflow-x-auto no-scrollbar">
+
+							<template x-for="(slide, index) in slides">
+								<div class="w-full shrink-0 grid grid-cols-3 md:grid-cols-2" x-show="currentSlideIndex == index + 1"
+								x-transition:enter="transition ease-in-out duration-500 transform"
+								x-transition:enter-start="translate-x-full opacity-0"
+								x-transition:enter-end="translate-x-0 opacity-100"
+								x-transition:leave="transition ease-in-out"
+								x-transition:leave-end="opacity-0"
+								>
+									<div class="relative">
+										<img class="w-full h-full inset-0 object-cover" x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" />
+									</div>
+									<div class="col-span-2 md:col-span-1 flex flex-col bg-plomo p-2 md:p-4 space-y-2 md:space-y-4">
+										<div class="w-fit bg-lila px-2 pb-1 text-white" x-text="slide.type"></div>
+										<a href="#" class="md:text-xl font-bold hover:text-morado hover:underline" x-text="slide.title"></a>
+										<span class="text-black/60" x-text="slide.date"></span>
+									</div>
+								</div>
+							</template>
+
+						</div>
+						<div class="flex justify-center gap-4 pt-4" role="group" aria-label="slides" >
+							<template x-for="(slide, index) in slides">
+								<button class="size-3 rounded-full transition bg-morado" x-on:click="currentSlideIndex = index + 1" x-bind:class="[currentSlideIndex === index + 1 ? 'bg-morado' : 'bg-morado/50']" x-bind:aria-label="'slide ' + (index + 1)"></button>
+							</template>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		</main>
+
+		<footer class="bg-plomo min-h-96" hx-get="partials/footer.html" hx-trigger="intersect once"></footer>
+
+	</div>
+
+</body>
+</html>
