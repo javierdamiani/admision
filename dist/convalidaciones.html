@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Convalidaciones</title>
-  <script type="module" crossorigin src="./assets/main-3inzY03B.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-Dr7AhR2R.css">
+  <script type="module" crossorigin src="./assets/main-FY7MnwOV.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-BZ7uhAam.css">
 </head>
 <body>
   	<div class="flex flex-col min-h-screen overflow-hidden" x-data="atTop" x-init="height" @resize.window="height">
@@ -127,86 +127,120 @@
 			<section class="bg-white">
 				<div class="max-w-7xl mx-auto space-y-10 py-16 px-5 md:px-6">
 					<h2 class="text-center text-2xl md:text-5xl font-bold">¿Cómo convalidar mis estudios?</h2>
+					<p class="md:text-xl">Pensando en tus necesidades, la Universidad Continental pone a tu disposición las siguientes modalidades de convalidación para que puedas continuar tus estudios. Conoce los requisitos a continuación:</p>
 
-					<div x-data="{ selectedTab: 'tab1' }" class="w-full">
-						<div x-on:keydown.right.prevent="$focus.wrap().next()" x-on:keydown.left.prevent="$focus.wrap().previous()" class="max-w-3xl mx-auto flex justify-between overflow-x-auto border-b border-black/50" role="tablist" aria-label="tab options">
-							<button x-on:click="selectedTab = 'tab1'" x-bind:aria-selected="selectedTab === 'tab1'" x-bind:tabindex="selectedTab === 'tab1' ? '0' : '-1'" x-bind:class="selectedTab === 'tab1' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="w-fit md:w-1/3 flex-shrink-0 h-min px-4 py-2" type="button" role="tab" aria-controls="tabpaneltab1" >Requisitos</button>
-							<button x-on:click="selectedTab = 'tab2'" x-bind:aria-selected="selectedTab === 'tab2'" x-bind:tabindex="selectedTab === 'tab2' ? '0' : '-1'" x-bind:class="selectedTab === 'tab2' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="w-fit md:w-1/3 flex-shrink-0 h-min px-4 py-2" type="button" role="tab" aria-controls="tabpaneltab2" >Presentación de documentos</button>
-							<button x-on:click="selectedTab = 'tab3'" x-bind:aria-selected="selectedTab === 'tab3'" x-bind:tabindex="selectedTab === 'tab3' ? '0' : '-1'" x-bind:class="selectedTab === 'tab3' ? 'font-bold text-morado border-b-2 border-morado' : 'text-black font-medium hover:border-b-2 hover:border-b-purpura hover:text-purpura'" class="w-fit md:w-1/3 flex-shrink-0 h-min px-4 py-2" type="button" role="tab" aria-controls="tabpaneltab3" >Cronograma</button>
-						</div>
+					<div x-data="{ selected: 'externa', items: [ { key: 'externa', label: 'Convalidación de asignaturas externa' }, { key: 'uc', label: 'Convalidación de asignaturas UC' }, { key: 'ampliacion', label: 'Ampliación de convalidación' }, { key: 'intercambio', label: 'Convalidación por intercambio estudiantil' }, { key: 'reconocimiento', label: 'Reconocimiento de la experiencia laboral' } ], content: {
+						externa: {
+							title: 'Convalidación de asignaturas externa',
+							description: 'La convalidación es el proceso de verificación de la correspondencia de los contenidos silábicos desarrollados en asignaturas afines con los estudios realizados en una institución de educación superior y la Universidad',
+							requisitos: [
+								'Pago por derecho de matrícula y primera cuota',
+								'Solicitud ingresada desde el Portal del Estudiante',
+								'Declaración jurada de regularización de documentos de convalidación',
+								'Declaración jurada de la autenticidad de documentos',
+							],
+							importante: [
+								'Si eres de un instituto, la carrera de procedencia debe conllevar al otorgamiento del título a nombre de la nación.',
+							],
+						},
+						uc: {
+							title: 'Convalidación de asignaturas UC',
+							description: 'Reconocimiento de asignaturas aprobadas en programas o planes previos dentro de la Universidad Continental.',
+							requisitos: [
+								'Ser estudiante regular o admitido en la UC',
+								'Historial académico y constancia de notas de la UC',
+								'Sílabos o sumillas en caso de cambio de plan de estudios',
+								'Declaración jurada de veracidad de la información',
+							],
+							importante: [
+								'Aplica para cambios de carrera, sede o plan de estudios dentro de la UC.',
+								'No procede sobre asignaturas desaprobadas de forma repetida.',
+							],
+						},
+						ampliacion: {
+							title: 'Ampliación de convalidación',
+							description: 'Solicitud para ampliar el alcance de una convalidación previamente otorgada, incorporando asignaturas adicionales.',
+							requisitos: [
+								'Solicitud de ampliación a través del Portal del Estudiante',
+								'Sílabos y documentos de respaldo de las nuevas asignaturas',
+								'Constancia de notas o certificados actualizados',
+								'Pago correspondiente al trámite',
+							],
+							importante: [
+								'La solicitud se encuentra sujeta a evaluación académica.',
+								'Debe presentarse dentro de los plazos establecidos en el cronograma.',
+							],
+						},
+						intercambio: {
+							title: 'Convalidación por intercambio estudiantil',
+							description: 'Reconocimiento de cursos aprobados en universidades socias bajo convenios de intercambio estudiantil.',
+							requisitos: [
+								'Convenio vigente y carta de aceptación de la universidad de destino',
+								'Plan de cursos preaprobado por la UC',
+								'Certificado de notas emitido por la universidad de destino',
+								'Sílabos sellados o firmados para la evaluación de equivalencias',
+							],
+							importante: [
+								'La preaprobación de cursos es obligatoria antes del intercambio.',
+								'Las convalidaciones se realizan por equivalencia de contenidos y créditos.',
+							],
+						},
+						reconocimiento: {
+							title: 'Reconocimiento de la experiencia laboral',
+							description: 'Evaluación de la experiencia profesional pertinente para reconocer competencias equivalentes a asignaturas del plan.',
+							requisitos: [
+								'CV documentado y actualizado',
+								'Certificados de trabajo y constancias de funciones',
+								'Portafolio de evidencias (informes, proyectos, entregables)',
+								'Evaluación por comité académico según normativa vigente',
+							],
+							importante: [
+								'El reconocimiento está sujeto a evaluación y disponibilidad según plan.',
+								'No sustituye prácticas o requisitos específicos cuando la normativa lo impide.',
+							],
+						},
+					} }" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+						<nav aria-label="Opciones de convalidación" class="md:col-span-1">
+							<ul class="divide-y divide-black/20 border-y border-black/20">
+								<template x-for="item in items" :key="item.key">
+									<li>
+										<button
+											type="button"
+											role="tab"
+											:aria-selected="selected === item.key"
+											@click="selected = item.key"
+											class="w-full flex items-center justify-between text-left py-5 px-3 md:px-4 transition text-2xl"
+											:class="selected === item.key ? 'font-bold text-morado' : 'text-black hover:text-purpura'">
+											<span x-text="item.label"></span>
+											<span x-cloak x-show="selected === item.key" aria-hidden="true" class="shrink-0">
+												<svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1L5.5 6L1.5 11" stroke="#6802C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+											</span>
+										</button>
+									</li>
+								</template>
+							</ul>
+						</nav>
 
-						<div class="max-w-4xl mx-auto mt-6 md:mt-12 text-black">
-							<div x-cloak x-show="selectedTab === 'tab1'" id="tabpaneltab1" role="tabpanel" aria-label="groups">
+						<section class="md:col-span-2">
+							<div class="bg-plomo p-4 md:p-8 lg:p-10 text-black">
+								<h3 class="text-3xl md:text-4xl font-bold mb-4" x-text="content[selected].title"></h3>
+								<p class="md:text-xl max-w-3xl" x-text="content[selected].description"></p>
 
-								<div class="bg-plomo w-full flex flex-col gap-4 md:gap-6 p-4 md:p-6">
-									<h3 class="text-xl font-bold">Requisitos para convalidación</h3>
-									<h5 class="text-lg font-bold">Requisitos generales</h5>
-									<div class="flex flex-col gap-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-morado"
-									x-data="{certificados: [
-										'Certificado original de estudios correspondiente a los cinco años de educación secundaria.',
-										'Certificado original de estudios universitarios con un mínimo de 72 créditos aprobados.',
-										'Constancia de la primera matrícula en la universidad de procedencia.',
-										'Constancia de no haber sido separado de su institución de procedencia.',
-										'Sílabos originales autenticados por la universidad de origen.',
-									]}"
-									>
-										<template x-for="(item, index) in certificados">
-										<div class="flex items-center gap-2 text-lg">
-											<div class="w-6">
-												<svg class="size-6 fill-morado" viewBox="0 0 49 40"><path d="M37.048 0 8.328 28.723l11.282 11.28 28.719-28.722a11.936 11.936 0 0 0-3.482-7.792A12.018 12.018 0 0 0 37.047 0Zm9.08 10.506L19.74 36.908l-.135.135-8.316-8.316L28.95 11.069l8.856-8.871a9.78 9.78 0 0 1 5.54 2.775 9.819 9.819 0 0 1 2.784 5.533h-.004Z"/><path d="M43.05 10.032a4.996 4.996 0 0 0-1.465-3.281 5.084 5.084 0 0 0-3.28-1.477l-7.569 7.568-14.974 14.963a5.007 5.007 0 0 0 1.465 3.289c.913.914 2.09 1.4 3.28 1.465l7.569-7.568L43.05 10.03Zm-2.259-.71-6.782 6.794-.011-.012-14.188 14.2a2.994 2.994 0 0 1-1.095-.69 2.936 2.936 0 0 1-.69-1.096l6.782-6.781h.011l14.188-14.2c.405.15.775.37 1.095.69.32.32.551.702.69 1.095ZM7.41 16.524a5.013 5.013 0 0 0-1.464 3.281l1.935 1.936 3.71 3.709 1.484-1.485-4.87-4.861c.15-.405.37-.775.69-1.095.32-.32.702-.552 1.095-.69l1.153 1.152v.012l3.709 3.709 1.484-1.485-5.636-5.644a5.007 5.007 0 0 0-3.29 1.465v-.004Z"/><path d="M9.805 27.239 6.1 23.537l-3.231-3.23a9.833 9.833 0 0 1 2.78-5.54 9.778 9.778 0 0 1 5.528-2.78l6.94 6.94 1.485-1.485-.887-.887-1.485-1.484-1.78-1.781-1.485-1.485-2.013-2.012a11.92 11.92 0 0 0-7.791 3.481A11.9 11.9 0 0 0 .67 21.07l7.653 7.653 1.48-1.48v-.004Z"/><path d="m5.533 22.976-1.477 1.478 4.269 4.27 1.477-1.478-4.269-4.27Z"/></svg>
-											</div>
-											<span x-text="item"></span>
-										</div>
-										</template>
-									</div>
-								</div>
+								<h4 class="text-xl font-bold mt-8">Requisitos generales</h4>
+								<ul class="mt-4 flex flex-col gap-3 md:gap-4 max-w-3xl list-disc pl-6">
+									<template x-for="(req, idx) in content[selected].requisitos" :key="idx">
+										<li class="text-lg" x-text="req"></li>
+									</template>
+								</ul>
 
+								<h4 class="text-xl font-bold mt-10">Importante</h4>
+								<ul class="mt-3 list-disc pl-6 max-w-3xl">
+									<template x-for="(imp, i2) in content[selected].importante" :key="'imp-'+i2">
+										<li x-text="imp"></li>
+									</template>
+								</ul>
 							</div>
-							<div x-cloak x-show="selectedTab === 'tab2'" id="tabpaneltab2" role="tabpanel" aria-label="groups">
-
-								<div class="bg-plomo w-full flex flex-col gap-4 md:gap-6 p-4 md:p-6">
-									<h3 class="text-xl font-bold">Documentos</h3>
-									<div class="flex flex-col gap-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-morado"
-									x-data="{certificados: [
-										'Documento 1',
-										'Documento 2',
-									]}"
-									>
-										<template x-for="(item, index) in certificados">
-										<div class="flex items-center gap-2 text-lg">
-											<div class="w-6">
-												<svg class="size-6 fill-morado" viewBox="0 0 49 40"><path d="M37.048 0 8.328 28.723l11.282 11.28 28.719-28.722a11.936 11.936 0 0 0-3.482-7.792A12.018 12.018 0 0 0 37.047 0Zm9.08 10.506L19.74 36.908l-.135.135-8.316-8.316L28.95 11.069l8.856-8.871a9.78 9.78 0 0 1 5.54 2.775 9.819 9.819 0 0 1 2.784 5.533h-.004Z"/><path d="M43.05 10.032a4.996 4.996 0 0 0-1.465-3.281 5.084 5.084 0 0 0-3.28-1.477l-7.569 7.568-14.974 14.963a5.007 5.007 0 0 0 1.465 3.289c.913.914 2.09 1.4 3.28 1.465l7.569-7.568L43.05 10.03Zm-2.259-.71-6.782 6.794-.011-.012-14.188 14.2a2.994 2.994 0 0 1-1.095-.69 2.936 2.936 0 0 1-.69-1.096l6.782-6.781h.011l14.188-14.2c.405.15.775.37 1.095.69.32.32.551.702.69 1.095ZM7.41 16.524a5.013 5.013 0 0 0-1.464 3.281l1.935 1.936 3.71 3.709 1.484-1.485-4.87-4.861c.15-.405.37-.775.69-1.095.32-.32.702-.552 1.095-.69l1.153 1.152v.012l3.709 3.709 1.484-1.485-5.636-5.644a5.007 5.007 0 0 0-3.29 1.465v-.004Z"/><path d="M9.805 27.239 6.1 23.537l-3.231-3.23a9.833 9.833 0 0 1 2.78-5.54 9.778 9.778 0 0 1 5.528-2.78l6.94 6.94 1.485-1.485-.887-.887-1.485-1.484-1.78-1.781-1.485-1.485-2.013-2.012a11.92 11.92 0 0 0-7.791 3.481A11.9 11.9 0 0 0 .67 21.07l7.653 7.653 1.48-1.48v-.004Z"/><path d="m5.533 22.976-1.477 1.478 4.269 4.27 1.477-1.478-4.269-4.27Z"/></svg>
-											</div>
-											<span x-text="item"></span>
-										</div>
-										</template>
-									</div>
-								</div>
-
-							</div>
-							<div x-cloak x-show="selectedTab === 'tab3'" id="tabpaneltab2" role="tabpanel" aria-label="groups">
-
-								<div class="bg-plomo w-full flex flex-col gap-4 md:gap-6 p-4 md:p-6">
-									<h3 class="text-xl font-bold">Cronograma</h3>
-									<div class="flex flex-col gap-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-white [&::-webkit-scrollbar-thumb]:bg-morado"
-									x-data="{certificados: [
-										'Documento 1',
-										'Documento 2',
-									]}"
-									>
-										<template x-for="(item, index) in certificados">
-										<div class="flex items-center gap-2 text-lg">
-											<div class="w-6">
-												<svg class="size-6 fill-morado" viewBox="0 0 49 40"><path d="M37.048 0 8.328 28.723l11.282 11.28 28.719-28.722a11.936 11.936 0 0 0-3.482-7.792A12.018 12.018 0 0 0 37.047 0Zm9.08 10.506L19.74 36.908l-.135.135-8.316-8.316L28.95 11.069l8.856-8.871a9.78 9.78 0 0 1 5.54 2.775 9.819 9.819 0 0 1 2.784 5.533h-.004Z"/><path d="M43.05 10.032a4.996 4.996 0 0 0-1.465-3.281 5.084 5.084 0 0 0-3.28-1.477l-7.569 7.568-14.974 14.963a5.007 5.007 0 0 0 1.465 3.289c.913.914 2.09 1.4 3.28 1.465l7.569-7.568L43.05 10.03Zm-2.259-.71-6.782 6.794-.011-.012-14.188 14.2a2.994 2.994 0 0 1-1.095-.69 2.936 2.936 0 0 1-.69-1.096l6.782-6.781h.011l14.188-14.2c.405.15.775.37 1.095.69.32.32.551.702.69 1.095ZM7.41 16.524a5.013 5.013 0 0 0-1.464 3.281l1.935 1.936 3.71 3.709 1.484-1.485-4.87-4.861c.15-.405.37-.775.69-1.095.32-.32.702-.552 1.095-.69l1.153 1.152v.012l3.709 3.709 1.484-1.485-5.636-5.644a5.007 5.007 0 0 0-3.29 1.465v-.004Z"/><path d="M9.805 27.239 6.1 23.537l-3.231-3.23a9.833 9.833 0 0 1 2.78-5.54 9.778 9.778 0 0 1 5.528-2.78l6.94 6.94 1.485-1.485-.887-.887-1.485-1.484-1.78-1.781-1.485-1.485-2.013-2.012a11.92 11.92 0 0 0-7.791 3.481A11.9 11.9 0 0 0 .67 21.07l7.653 7.653 1.48-1.48v-.004Z"/><path d="m5.533 22.976-1.477 1.478 4.269 4.27 1.477-1.478-4.269-4.27Z"/></svg>
-											</div>
-											<span x-text="item"></span>
-										</div>
-										</template>
-									</div>
-								</div>
-
-							</div>
-						</div>
+						</section>
 					</div>
 				</div>
 			</section>
